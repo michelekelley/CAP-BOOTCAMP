@@ -110,7 +110,7 @@ print("Standard:")
 print("Spearman rank correlation coefficient %f" % cc)
 print("Spearman rank probability of no correlation %f" % pnull)
 # convert pnull to equivalent confidence expressed as # sigma for Gaussian
-confidence=stats.norm.interval(1-pnull) # you fill in ??? with enclosed prob.
+confidence=stats.norm.interval(1-pnull) # 1-pnull gives probability of correlation - confidence gives endpoints of the range that contains the percent that is correlated
 # note that by default "interval" assumes a Gaussian of mean 0 and sigma 1
 # returns 2-sided upper & lower c.i. bounds
 
