@@ -108,16 +108,12 @@ randomnum = np.asarray(random.sample(xrange(len(2*color)), len(color)))
 savelastrn = randomnum
 
 
-#These lines will save "savelastrn" to a file called gooddistribution (currently p=0.995)
-#gooddistribution= TemporaryFile()
-#np.save(gooddistribution, savelastrn)
-#np.load(gooddistribution)
 
 
-coloreven = (randomnum%2 == 0)
-colorodd = (randomnum%2 != 0)
-#coloreven = (savelastrn%2 == 0)
-#colorodd = (savelastrn%2 != 0)
+#coloreven = (randomnum%2 == 0)
+#colorodd = (randomnum%2 != 0)
+coloreven = (savelastrn%2 == 0)
+colorodd = (savelastrn%2 != 0)
 color1 = color[coloreven]
 color2 = color[colorodd]
 
