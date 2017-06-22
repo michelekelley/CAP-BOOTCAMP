@@ -101,17 +101,17 @@ plt.text(1.2,3,"N=300",size=11,color='b')
 
 ### where  .998*N/2     
 """
-inds=redchisqdist1[np.where(np.argsort(redchisqdist1) == 30)]
+inds=redchisqdist1[np.where(np.argsort(redchisqdist1) == 15)]
 
 
 print(inds) # fill in to print red. chi^2 for 99.8% conf. for N=30
 
 
 
-inds=redchisqdist1[np.where(np.argsort(redchisqdist1) == 30)]
-print(inds) # fill in to print red. chi^2 for 99.8% conf. for N=300
-# look at the graph and verify your answers make visual sense
+inds=redchisqdist1[np.where(np.argsort(redchisqdist1) == 150)]
 """
+# look at the graph and verify your answers make visual sense
+
 
 inds=np.argsort(redchisqdist1)
 print("Red. Chi^2 for 99.8% conf. for N=30:") # fill in to print red. chi^2 for 99.8% conf. for N=30
