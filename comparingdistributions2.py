@@ -12,9 +12,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.neighbors import KernelDensity
 import scipy.stats as stats
-
-
-      
+import random 
+#from tempfile import TemporaryFile
 
            
 #Read in the file
@@ -100,80 +99,37 @@ plt.xlabel("u-r color (mag)")
 plt.legend()
 
 
-
 print (DD, pnullks)
 print (UU, pnullmw)
 
-#Here start the stats
+
+#now create a random selection
+randomnum = np.asarray(random.sample(xrange(len(2*color)), len(color)))
+savelastrn = randomnum
+
+
+#These lines will save "savelastrn" to a file called gooddistribution (currently p=0.995)
+#gooddistribution= TemporaryFile()
+#np.save(gooddistribution, savelastrn)
+#np.load(gooddistribution)
+
+
+coloreven = (randomnum%2 == 0)
+colorodd = (randomnum%2 != 0)
+#coloreven = (savelastrn%2 == 0)
+#colorodd = (savelastrn%2 != 0)
+color1 = color[coloreven]
+color2 = color[colorodd]
 
 
 
-plt.figure(4)
-plt.hist(color[selenvnear], normed=1)
-plt.hist(color[selenvfar], normed=1, alpha=.3)
+DDrand, pnullksrand = stats.ks_2samp(color1,color2)
 
+print (DDrand, pnullksrand)
 
-
-
-"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Here do the cz histogram
-plt.figure(1)
-plt.subplot(221)
-counts, bins, patches = hist(cz,histtype='stepfilled',color='m', alpha=0.3)
-plt.text(3000, 2000, '%s:\n%i bins' % ('standard', len(counts)))
-           
-plt.subplot(222)
-counts, bins, patches = hist(cz, bins='freedman',histtype='stepfilled', color='b', alpha=0.3)
-plt.text(3800, 600, '%s:\n%i bins' % ('freedman', len(counts)))
-
-plt.subplot(223)
-counts, bins, patches = hist(cz, bins='knuth',histtype='stepfilled', color = 'g', alpha=0.3)
-plt.text(3000, 500, '%s:\n%i bins' % ('knuth', len(counts)))
-
-plt.subplot(224)
-counts, bins, patches = hist(cz, bins='scott',histtype='stepfilled', color='r', alpha=0.3)
-plt.text(3600,800, '%s:\n%i bins' % ('scott', len(counts)))
-
-"""
+plt.figure(3)
+hist(color1, bins = 'knuth', label='color1', normed=1, histtype = 'stepfilled',alpha =0.6, color='green')
+hist(color2, bins = 'knuth', label='color2', normed=1, histtype = 'step', hatch = '//', alpha = 0.8, color='blue')
+plt.title('Random Sample Color Comparison')
+plt.xlabel('u-r color (mag)')
+plt.legend()
