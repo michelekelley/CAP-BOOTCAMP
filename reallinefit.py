@@ -10,6 +10,8 @@ from __future__ import division
 import numpy as np
 import matplotlib.pyplot as plt
 import numpy.random as npr
+from astropy.stats import biweight_midvariance
+from sklearn.metrics import mean_squared_error
 
 
 narr = 100
@@ -126,11 +128,12 @@ print("fractional uncertainty on alpha is %0.7f" % (alphauncb/alphaestb))
 print("fractional uncertainty on beta is %0.7f" % (betauncb/betaestb))
 print "\n"
 
+bmv = biweight_midvariance((yvals-ytrue))
+rms = np.sqrt(mean_squared_error(ytrue, yvals))
 
-
-
-
-
+print "The biweight scatter:", bmv
+print "The rms scatter:", rms
+print "\n"
 
 
 
