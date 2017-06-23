@@ -135,14 +135,19 @@ print "\n"
 
 
 ###HERE BEGINS HAVING ERROR IN X AND Y
+###When you have error in x and y, the best fit will be centered about the variable with the dominant scatter.
+###For instance, with sigma = 1 for y and and sigma = 3 for x, the error is much more dominant in x.Thus an 
+###inverse fit is the closest fit. With a more even error distribution, bisector fit is closer. 
+###Selection bias will effect the fits. For a selection in x, the forward line won't change much. For a selection
+###in y, the inverse line will not be altered.
 
 
 xvals = xvals + npr.normal(0,2,100)
 
 
 #add in selection bias for X > 3
-#yvals = yvals[np.where( xvals >3)]
-#xvals = xvals[np.where( xvals >3)]
+yvals = yvals[np.where( xvals >3)]
+xvals = xvals[np.where( xvals >3)]
 
 
 
@@ -198,7 +203,7 @@ print("analytical MLE y-intercept = %0.7f" %betaesti)
 
 # Overplot the MLE ("best fit") solution
 yfitvals=xvals*alphaesti+betaesti
-plt.plot(xvals,yfitvals,'b', label="inverse")
+plt.plot(xvals,yfitvals,'b', label="inverse --- best(for sigma=3)")
 
 # Compute analytic uncertainties on slope and y-intercept 
 
