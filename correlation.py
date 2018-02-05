@@ -58,6 +58,9 @@ plt.xlim(2,20)
 plt.ylim(2,14)
 plt.title('curved')
 
+# change because sebastian is a big ass hat.
+# FIXME remove comment
+
 plt.subplot(223) # 2 rows x 2 columns of plots, 3rd plot (bottom left)
 plt.plot(x3, y3,'g.',markersize=10)
 plt.plot(testxvals,3.+0.5*testxvals,'r',linestyle=':',linewidth=2.)
